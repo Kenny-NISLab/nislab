@@ -88,7 +88,9 @@ export default {
   },
   head({ $config }) {
     return {
-      title: this.post.post.fields.title + ' | NISLAB',
+      title:
+        this.post.post.fields.title +
+        ' - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       meta: [
         { hid: 'og:type', property: 'og:type', content: 'website' },
         {
@@ -99,7 +101,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.post.post.fields.title + ' | NISLAB',
+          content:
+            this.post.post.fields.title +
+            ' - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
         },
         {
           hid: 'og:image',

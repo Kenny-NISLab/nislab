@@ -33,12 +33,14 @@ export default {
   },
   head() {
     return {
-      title: '研究室メンバー | NISLAB',
+      title:
+        '研究室メンバー - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       meta: [
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '研究室メンバー | NISLAB',
+          content:
+            '研究室メンバー - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
         },
       ],
     }

@@ -121,12 +121,14 @@ export default {
   },
   head() {
     return {
-      title: 'プライバシーポリシー | NISLAB',
+      title:
+        'プライバシーポリシー - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       meta: [
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'プライバシーポリシー | NISLAB',
+          content:
+            'プライバシーポリシー - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
         },
       ],
     }

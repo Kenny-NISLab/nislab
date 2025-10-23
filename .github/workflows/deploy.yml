@@ -69,7 +69,7 @@ jobs:
           SLACK_CHANNEL: 'app-website-nislab'
           SLACK_ICON: https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2021-07-06/2257469713729_06357f0ef4a522dfb049_72.png
           SLACK_USERNAME: 'NISLAB GitHub Actions'
-          SLACK_TITLE: "✅ デプロイ成功"
+          SLACK_TITLE: '✅ デプロイ成功'
           SLACK_MESSAGE: |
             NISLAB HPのデプロイが成功しました！
             更新をご確認ください。
@@ -85,7 +85,7 @@ jobs:
           SLACK_CHANNEL: 'app-website-nislab'
           SLACK_ICON: https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2021-07-06/2257469713729_06357f0ef4a522dfb049_72.png
           SLACK_USERNAME: 'NISLAB GitHub Actions'
-          SLACK_TITLE: "❌ デプロイ失敗"
+          SLACK_TITLE: '❌ デプロイ失敗'
           SLACK_MESSAGE: |
             NISLAB HPのデプロイが失敗しました。
             ログの詳細は上記の「Actions URL」をご確認ください。

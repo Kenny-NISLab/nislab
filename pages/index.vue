@@ -4,7 +4,7 @@
       <swiper :options="swiperOption" class="hero__swiper">
         <swiper-slide v-for="(image, index) in images" :key="index">
           <img
-            :src="require(`~/assets/images/${image.src}`)"
+            :src="`/images/${image.src}`"
             :alt="`NISLABイメージ画像 ${index + 1}`"
             class="hero__image"
             :style="{ objectPosition: image.objectPosition }"
@@ -76,6 +76,17 @@ export default {
         loop: true,
         effect: 'fade',
       },
+    }
+  },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: process.env.NUXT_ENV_BASE_URL + '/images/drone.webp',
+        },
+      ],
     }
   },
 }

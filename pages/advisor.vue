@@ -35,12 +35,14 @@ export default {
   },
   head() {
     return {
-      title: '教員 | NISLAB',
+      title:
+        '教員 - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       meta: [
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '教員 | NISLAB',
+          content:
+            '教員 - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
         },
       ],
     }

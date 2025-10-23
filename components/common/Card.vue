@@ -7,7 +7,7 @@
       </div>
       <img
         :src="img.fields ? img.fields.file.url : 'nislab-ogp.png'"
-        :alt="img.fields ? img.fields.description : ''"
+        :alt="img.fields ? img.fields.description : 'NISLAB'"
         class="card__img"
       />
     </nuxt-link>

@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'NISLAB',
+    title: 'NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
     htmlAttrs: {
       lang: 'ja',
     },
@@ -17,7 +17,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: '同志社大学 ネットワーク情報システム研究室',
+        content:
+          '同志社大学ネットワーク情報システム研究室（佐藤研究室）では，身の回りの家電や自動車などの組込みシステムからスマートフォンやクラウドまで，モノのインターネット（IoT: Internet of Things）により現実世界と仮想世界を融合し，いつでも，どこでも，誰もが自由で安全に利用可能なコンピューティング環境を実現できる分散システム（Network & Distributed Systems）の研究を行っています．',
       },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
@@ -28,22 +29,25 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'NISLAB',
+        content:
+          'NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'NISLAB',
+        content:
+          'NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       },
       {
         hid: 'og:description',
         property: 'og:description',
-        content: '同志社大学ネットワーク情報システム研究室',
+        content:
+          '同志社大学ネットワーク情報システム研究室（佐藤研究室）では，身の回りの家電や自動車などの組込みシステムからスマートフォンやクラウドまで，モノのインターネット（IoT: Internet of Things）により現実世界と仮想世界を融合し，いつでも，どこでも，誰もが自由で安全に利用可能なコンピューティング環境を実現できる分散システム（Network & Distributed Systems）の研究を行っています．',
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: process.env.NUXT_ENV_BASE_URL + 'nislab-ogp.png',
+        content: process.env.NUXT_ENV_BASE_URL + '/nislab-ogp.png',
       },
       {
         hid: 'twitter:card',
@@ -108,6 +112,7 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/moment
     '@nuxtjs/moment',
+    '@nuxtjs/sitemap',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -191,4 +196,9 @@ export default {
     baseURL: process.env.NUXT_ENV_BASE_URL,
   },
   loading: '~/components/utility/Loading.vue',
+
+  sitemap: {
+    hostname: process.env.NUXT_ENV_BASE_URL,
+    gzip: true,
+  }
 }

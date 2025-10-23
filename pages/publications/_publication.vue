@@ -52,7 +52,9 @@ export default {
   },
   head({ $config }) {
     return {
-      title: this.publication.fields.title + ' | NISLAB',
+      title:
+        this.publication.fields.title +
+        ' - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       meta: [
         {
           hid: 'og:url',
@@ -62,7 +64,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.publication.fields.title + ' | NISLAB',
+          content:
+            this.publication.fields.title +
+            ' - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
         },
       ],
     }

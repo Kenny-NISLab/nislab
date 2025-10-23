@@ -1,11 +1,12 @@
 # NISLAB HP
-同志社大学ネットワーク情報システム研究室のHP（ https://nislab.doshisha.ac.jp ）です．
 
-2021年頃以前はWordPressで研究室サイトが管理されており，2021年に`Nuxt.js(Vue.js)`と`Contentful`に移行されました．
+同志社大学ネットワーク情報システム研究室の HP（ https://nislab.doshisha.ac.jp ）です．
 
-そして，2025年の10月頃に，SEO対策なども含めた大型更新を行っております．
+2021 年頃以前は WordPress で研究室サイトが管理されており，2021 年に`Nuxt.js(Vue.js)`と`Contentful`に移行されました．
 
-2025年以前の詳細は，最後の「2025年以前のREADMEの内容」から確認可能です。
+そして，2025 年の 10 月頃に，SEO 対策なども含めた大型更新を行っております．
+
+2025 年以前の詳細は，最後の「2025 年以前の README の内容」から確認可能です。
 
 ## 構成（2021 年 7 月時点）
 
@@ -24,7 +25,7 @@ AWS Lightsail 上で Apache が動いており，静的な IP アドレスを割
 
 AWS 等を使ってサーバーレスなどスマートに作れそうですが，どうやら大学側のドメイン (DNS) に A レコードしか登録申請することが出来ず，（つまり静的な IP アドレスが必要で，）泣く泣くこのような形になっているみたいです．
 
-多分もっとスマートなやり方はありますが，2025年現在，記事数が膨大になってきて移行が大変なため，構成は変更しない形にしています．
+多分もっとスマートなやり方はありますが，2025 年現在，記事数が膨大になってきて移行が大変なため，構成は変更しない形にしています．
 
 また，HTTPS 化については，Let's Encrypt を利用しており，Cron で証明書発行を自動化されています．
 
@@ -34,7 +35,7 @@ Contentful での更新や，リポジトリへの Push があった際は，Git
 
 詳細は，`.github/workflows/deploy.yml` にありますが，主な流れとしては，
 
-1. Contentful / リポジトリの更新をフックに GitHub Actionsのビルド・デプロイ用の Job が始動
+1. Contentful / リポジトリの更新をフックに GitHub Actions のビルド・デプロイ用の Job が始動
 2. GitHub Actions 内でページのビルドが開始
 3. ビルド成果物を Lightsail へコピー
 
@@ -190,6 +191,7 @@ sudo systemctl restart crond
 ```
 
 ### 7. (必要かはわからないが) 設定変更
+
 ```sh
 # /etc/letsencrypt/options-ssl-apache.conf
 
@@ -206,9 +208,9 @@ sudo systemctl restart crond
 
 ## Nuxt.js を自前の環境で動かしたい場合
 
-以下「2025年以前のREADMEの内容」の「Nuxt.js を編集したい方向け」をご確認ください．
+以下「2025 年以前の README の内容」の「Nuxt.js を編集したい方向け」をご確認ください．
 
-## 2025年以前のREADMEの内容
+## 2025 年以前の README の内容
 
 <details>
 

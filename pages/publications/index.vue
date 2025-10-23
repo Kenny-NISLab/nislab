@@ -34,12 +34,14 @@ export default {
   },
   head() {
     return {
-      title: '研究業績 | NISLAB',
+      title:
+        '研究業績 - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       meta: [
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '研究業績 | NISLAB',
+          content:
+            '研究業績 - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
         },
       ],
     }

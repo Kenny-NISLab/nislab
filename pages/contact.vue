@@ -36,12 +36,14 @@ export default {
   },
   head() {
     return {
-      title: 'お問い合わせ | NISLAB',
+      title:
+        'お問い合わせ - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
       meta: [
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'お問い合わせ | NISLAB',
+          content:
+            'お問い合わせ - NISLAB | 同志社大学ネットワーク情報システム研究室（佐藤研究室）',
         },
       ],
     }
