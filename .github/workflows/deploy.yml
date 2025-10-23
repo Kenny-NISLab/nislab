@@ -19,13 +19,6 @@ jobs:
         with:
           node-version: 16
 
-      # # ⚡️ npm依存関係キャッシュ
-      # - uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       **/node_modules
-      #     key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-
       # 🔐 Secretsから.env生成
       - name: Create .env file
         run: |
