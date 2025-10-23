@@ -19,12 +19,12 @@ jobs:
         with:
           node-version: 16
 
-      # ⚡️ npm依存関係キャッシュ
-      - uses: actions/cache@v3
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+      # # ⚡️ npm依存関係キャッシュ
+      # - uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       **/node_modules
+      #     key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
       # 🔐 Secretsから.env生成
       - name: Create .env file
@@ -36,7 +36,7 @@ jobs:
       # 🏗️ Nuxt 2 ビルド（詳細ログ付き）
       - name: Install dependencies and build
         run: |
-          npm install --production
+          npm install --no-cache
           npm run generate
 
       # 📦 成果物をアーカイブ（distの中身だけ）
