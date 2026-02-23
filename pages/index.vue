@@ -12,23 +12,6 @@
         </swiper-slide>
       </swiper>
       <div class="hero__filter" />
-      <!-- ===== 巻物バナー ===== -->
-      <div class="hero__openLabWrap">
-        <a
-          href="/topics/6MYzq3iG7lF7wrqkKGNQ2b/"
-          class="hero__openLabLink"
-          aria-label="オープンラボ開催ページへ"
-        >
-          <img
-            src="/images/scroll.png"
-            alt=""
-            class="hero__openLabImg"
-            aria-hidden="true"
-          />
-          <span class="hero__openLabText">〜2/16 オープンラボ開催〜</span>
-        </a>
-      </div>
-      <!-- ===== 巻物バナー===== -->
       <h2 class="hero__title">
         <span class="hero__univName">Doshisha University</span>
         <span v-for="(span, index) in name" :key="index" class="hero__labName">
@@ -141,100 +124,6 @@ export default {
     height: 100%;
     object-fit: cover;
   }
-  /* ===== 巻物バナー ===== */
-  &__openLabWrap {
-    position: absolute;
-    top: 122px; 
-    right: 32px;
-    z-index: 5;
-    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
-    @include mq(sp) {
-      top: 98px;
-      right: 12px;
-    }
-  }
-
-  &__openLabLink {
-    position: relative;
-    display: block;
-    width: clamp(200px, 58vw, 360px);
-    aspect-ratio: 1983 / 931;
-    overflow: hidden;
-    text-decoration: none;
-    line-height: 0;
-    transform: translateY(0);
-    transition: transform 120ms ease;
-    container-type: inline-size;
-
-    &::after {
-      content: '';
-      position: absolute;
-      z-index: 1;
-      pointer-events: none;
-
-      left: -1.614%;
-      top: -23.3%;
-      width: 103.278%;
-      height: 146.6165%;
-
-      background: #e97132;
-      opacity: 0.95;
-      mix-blend-mode: multiply;
-
-      -webkit-mask-image: url('/images/scroll.png');
-      mask-image: url('/images/scroll.png');
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      -webkit-mask-size: 100% 100%;
-      mask-size: 100% 100%;
-      -webkit-mask-position: 0 0;
-      mask-position: 0 0;
-    }
-  }
-
-  &__openLabImg {
-    position: absolute;
-    z-index: 0;
-    pointer-events: none;
-    left: -1.614%;
-    top: -23.3%;
-    width: 103.278%;
-    height: 146.6165%;
-    display: block;
-    max-width: none;
-    filter: brightness(1.08) contrast(1.02);
-  }
-
-  &__openLabText {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  top: 32%;
-  transform: translate(-50%, -50%);
-  width: 92%;
-  text-align: center;
-  pointer-events: none;
-  color: #fff;
-  font-weight: 900;
-  font-size: clamp(0.72rem, 2.8vw, 1.2rem);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
-  @supports (font-size: 1cqw) {
-    font-size: clamp(0.72rem, 4.2cqw, 1.2rem);
-  }
-}
-
-  &__openLabLink:hover {
-    transform: translateY(-1px);
-  }
-
-  &__openLabLink:focus {
-    outline: 2px solid #fff;
-    outline-offset: 3px;
-  }
-  /* ===== 巻物バナー ===== */
-
   &__title {
     position: absolute;
     bottom: 32px;
