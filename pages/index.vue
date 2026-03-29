@@ -94,7 +94,7 @@ export default {
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   font-family: $font-set-en;
 
   &__filter {
@@ -208,7 +208,7 @@ export default {
     width: $content-width;
     max-width: 90%;
     margin: 0 auto;
-    margin-top: 8rem;
+    margin-top: 2rem;
     font-weight: 300;
 
     @include mq(sp) {
@@ -217,7 +217,7 @@ export default {
   }
 
   &__button {
-    margin-top: 8rem;
+    margin-top: 2rem;
     text-align: center;
 
     @include mq(sp) {
@@ -228,7 +228,7 @@ export default {
 
 .indexTopics {
   &__cards {
-    margin-top: 8rem;
+    margin-top: 2rem;
 
     @include mq(sp) {
       margin-top: 4rem;
@@ -236,7 +236,7 @@ export default {
   }
 
   &__button {
-    margin-top: 8rem;
+    margin-top: 2rem;
     text-align: center;
 
     @include mq(sp) {
