@@ -64,7 +64,7 @@ export default {
         { src: 'simulator.webp', objectPosition: '40% 50%' },
         { src: 'car.webp', objectPosition: '30% 50%' },
       ],
-      name: ['Network', 'Information', 'System', 'Laboratory'],
+      name: ['Network', 'Information', 'Systems', 'Laboratory'],
       swiperOption: {
         speed: 1000,
         autoplay: {
@@ -227,6 +227,7 @@ export default {
 }
 
 .indexTopics {
+  padding: 3rem;
   &__cards {
     margin-top: 2rem;
 
@@ -243,5 +244,8 @@ export default {
       margin-top: 4rem;
     }
   }
+}
+#about {
+  padding: 3rem;
 }
 </style>

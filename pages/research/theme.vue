@@ -1,6 +1,6 @@
 <template>
   <Section class="research">
-    <Title :title="`Research`" :sub-title="`研究内容`" />
+    <Title :title="`Theme`" :sub-title="`研究テーマ`" />
     <article class="research__content">
       <section
         v-for="(research, index) in researches"
@@ -23,7 +23,7 @@
         />
       </section>
     </article>
-    <ReturnPage />
+    <ReturnPage text="Research" slug="/research" />
   </Section>
 </template>
 

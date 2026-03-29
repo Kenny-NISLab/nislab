@@ -1,10 +1,10 @@
 <template>
   <Section class="projects">
-    <Title :title="`研究プロジェクト`" :sub-title="`Projects`" />
+    <Title :title="`Projects`" :sub-title="`研究プロジェクト`" />
     <article ref="content" class="projects__content content">
-      <div v-html="$md.render(body)" />
+      <div v-html="$md.render(body)"></div>
     </article>
-    <ReturnPage text="研究一覧へ" slug="/research" />
+    <ReturnPage text="Research" slug="/research" />
   </Section>
 </template>
 

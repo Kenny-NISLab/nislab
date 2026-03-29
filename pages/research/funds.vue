@@ -1,10 +1,10 @@
 <template>
   <Section class="funds">
-    <Title :title="`研究資金`" :sub-title="`Funds`" />
+    <Title :title="`Funds`" :sub-title="`研究資金`" />
     <article ref="content" class="funds__content content">
-      <div v-html="$md.render(body)" />
+      <div v-html="$md.render(body)"></div>
     </article>
-    <ReturnPage text="研究一覧へ" slug="/research" />
+    <ReturnPage text="Research" slug="/research" />
   </Section>
 </template>
 
