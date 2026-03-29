@@ -44,16 +44,16 @@ export default {
           name: 'research',
           children: [
             {
-              name: 'ITS',
-              path: 'its',
+              name: 'Theme',
+              path: 'theme',
             },
             {
-              name: 'Network',
-              path: 'network-architecture',
+              name: 'Funds',
+              path: 'funds',
             },
             {
-              name: 'IoT',
-              path: 'iot',
+              name: 'Projects',
+              path: 'projects',
             },
           ],
         },
@@ -71,7 +71,15 @@ export default {
             })
             .slice(0, 4),
         },
-        { name: 'members' },
+        {
+          name: 'members',
+          children: [
+            {
+              name: 'Career',
+              path: 'career',
+            },
+          ],
+        },
         { name: 'contact' },
       ]
     },

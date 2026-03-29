@@ -5,7 +5,7 @@
     <article ref="content" class="networkArchitecture__content content">
       <div v-html="$md.render(body)" />
     </article>
-    <ReturnPage text="研究一覧へ" slug="/research" />
+    <ReturnPage text="研究一覧へ" slug="/research/theme" />
   </Section>
 </template>
 
