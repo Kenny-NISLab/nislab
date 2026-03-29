@@ -3,12 +3,20 @@
     <Title :title="`Members`" :sub-title="`研究室メンバー`" />
     <!-- eslint-disable vue/no-v-html -->
     <article class="members__content content" v-html="$md.render(body)" />
+    <div class="members__button">
+      <MoreButton link-to="/members/career" text="Career" />
+    </div>
     <ReturnPage />
   </Section>
 </template>
 
 <script>
-import { Section, Title, ReturnPage } from '~/components/utility/index'
+import {
+  Section,
+  Title,
+  ReturnPage,
+  MoreButton,
+} from '~/components/utility/index'
 import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
@@ -17,6 +25,7 @@ export default {
     Section,
     Title,
     ReturnPage,
+    MoreButton,
   },
   async asyncData() {
     return await client
@@ -59,6 +68,10 @@ export default {
     @include mq(lap) {
       overflow-x: scroll;
     }
+  }
+  &__button {
+    margin-bottom: 2rem;
+    text-align: center;
   }
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
-  <nuxt-link :to="linkTo" class="button" role="button"
-    ><span>more</span><ChevronUp class="button__arrow"
-  /></nuxt-link>
+  <nuxt-link :to="linkTo" class="button" role="button">
+    <span>{{ text }}</span>
+    <ChevronUp class="button__arrow" />
+  </nuxt-link>
 </template>
 
 <script>
@@ -16,6 +17,10 @@ export default {
       type: String,
       required: true,
       default: './',
+    },
+    text: {
+      type: String,
+      default: 'more',
     },
   },
 }
