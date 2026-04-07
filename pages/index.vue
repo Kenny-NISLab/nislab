@@ -94,7 +94,7 @@ export default {
 .hero {
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: 50vh;
   font-family: $font-set-en;
 
   &__filter {
