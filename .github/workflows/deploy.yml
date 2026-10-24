@@ -17,7 +17,8 @@ jobs:
       # ⚙️ Node.js 16 (Nuxt2対応)
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 24
+          cache: npm
 
       # 🔐 Secretsから.env生成
       - name: Create .env file
@@ -29,7 +30,7 @@ jobs:
       # 🏗️ Nuxt 2 ビルド（詳細ログ付き）
       - name: Install dependencies and build
         run: |
-          npm install --no-cache
+          npm ci
           npm run generate
 
       # 📦 成果物をアーカイブ（distの中身だけ）
