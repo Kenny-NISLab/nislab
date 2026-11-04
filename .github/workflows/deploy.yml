@@ -5,6 +5,16 @@ on:
     branches:
       - main
   repository_dispatch:
+  workflow_dispatch: # Actions画面から手動で再デプロイできるように
+
+# 🔒 デプロイは常に1本ずつ実行する
+# Contentfulは短時間に何度も更新されるとWebhookを連続で飛ばすため、
+# 以前は複数のデプロイが同時にサーバーを書き換えて /var/www/html が壊れることがあった。
+# cancel-in-progress: false → 実行中のデプロイは中断せず、後続は待機
+# （待機中のものはさらに新しい実行で置き換えられるので、最終的に最新の内容が反映される）
+concurrency:
+  group: deploy-nislab-production
+  cancel-in-progress: false
 
 jobs:
   Build-and-Deploy:
@@ -14,7 +24,7 @@ jobs:
       # 🧩 リポジトリ取得
       - uses: actions/checkout@v4
 
-      # ⚙️ Node.js 16 (Nuxt2対応)
+      # ⚙️ Node.js 24
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -27,7 +37,7 @@ jobs:
           echo "NUXT_ENV_CTF_ACCESS_TOKEN=${{ secrets.NUXT_ENV_CTF_ACCESS_TOKEN }}" >> .env
           echo "NUXT_ENV_BASE_URL=${{ secrets.NUXT_ENV_BASE_URL }}" >> .env
 
-      # 🏗️ Nuxt 2 ビルド（詳細ログ付き）
+      # 🏗️ Nuxt 2 ビルド
       - name: Install dependencies and build
         run: |
           npm ci
@@ -37,21 +47,47 @@ jobs:
       - name: Archive build files
         run: tar -czf dist.tar.gz -C dist .
 
-      # 🚀 Lightsailへデプロイ（/var/www/html に直接展開）
+      # 🚀 Lightsailへデプロイ
+      # 1) 実行ごとにユニークな名前でアーカイブを転送（他の実行とファイルが衝突しない）
+      # 2) まずホーム配下の一時ディレクトリに展開して中身を確認
+      # 3) 展開に成功した時だけ /var/www/html を差し替える
+      #    → 途中で失敗しても公開ディレクトリは前回の状態のまま残る
       - name: Deploy to AWS Lightsail
+        env:
+          RELEASE: ${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           echo "${{ secrets.SERVER_KEY }}" > aws_lightsail_key
           chmod 600 aws_lightsail_key
-          scp -i aws_lightsail_key -o StrictHostKeyChecking=no dist.tar.gz \
-            ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/tmp/
-          ssh -i aws_lightsail_key -o StrictHostKeyChecking=no \
-            ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} \
-            "
-            mkdir -p /var/www/html && \
-            find /var/www/html -mindepth 1 -delete && \
-            tar -xzf /tmp/dist.tar.gz -C /var/www/html && \
-            rm /tmp/dist.tar.gz
-            "
+          trap 'rm -f aws_lightsail_key' EXIT
+          SSH_OPTS="-i aws_lightsail_key -o StrictHostKeyChecking=no"
+          TARGET="${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}"
+
+          scp $SSH_OPTS dist.tar.gz "$TARGET:/tmp/dist-${RELEASE}.tar.gz"
+
+          ssh $SSH_OPTS "$TARGET" bash -s -- "$RELEASE" <<'REMOTE'
+          set -euo pipefail
+          RELEASE="$1"
+          ARCHIVE="/tmp/dist-${RELEASE}.tar.gz"
+          STAGE="$HOME/nislab-release-${RELEASE}"
+          DOCROOT=/var/www/html
+          trap 'rm -rf "$STAGE" "$ARCHIVE"' EXIT
+
+          # 一時ディレクトリに展開（ここで失敗しても公開ディレクトリは無傷）
+          rm -rf "$STAGE"
+          mkdir -p "$STAGE"
+          tar -xzf "$ARCHIVE" -C "$STAGE"
+          test -f "$STAGE/index.html" || { echo "index.html がありません。デプロイを中止します" >&2; exit 1; }
+
+          # 展開に成功した場合のみ公開ディレクトリを差し替え
+          mkdir -p "$DOCROOT"
+          if command -v rsync >/dev/null 2>&1; then
+            rsync -a --delete-after --delay-updates "$STAGE/" "$DOCROOT/"
+          else
+            find "$DOCROOT" -mindepth 1 -delete
+            cp -a "$STAGE/." "$DOCROOT/"
+          fi
+          echo "Deployed release ${RELEASE}"
+          REMOTE
 
       # ✅ 成功通知
       - name: Notify Slack (success)
